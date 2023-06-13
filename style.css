@@ -365,7 +365,7 @@ a:hover {
 }
 
 #radio1:checked~.first {
-    margin: 0;
+    margin: -10%;
 
 }
 
@@ -401,6 +401,18 @@ a:hover {
 }
 
 #radio1:checked ~ .navigation-auto .auto{
+background-color: var(--white);
+}
+#radio2:checked ~ .navigation-auto .auto{
+    background-color: var(--white);
+
+}
+#radio3:checked ~ .navigation-auto .auto{
+    background-color: var(--white);
+
+}
+#radio4:checked ~ .navigation-auto .auto{
+    background-color: var(--white);
 
 }
 
