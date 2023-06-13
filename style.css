@@ -1,0 +1,294 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap%27');
+
+
+* {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+
+
+}
+
+html {
+    height: 100%;
+    font-size: 14px;
+    font-family: "Poppins", sans-serif;
+
+}
+
+body {
+    height: 100%;
+    font-family: "Poppins", sans-serif;
+}
+
+.hero-section {
+    display: flex;
+    min-height: 100%;
+    align-items: center;
+    justify-content: center;
+
+
+
+}
+
+.card container {
+    display: flex;
+    gap: 30px;
+    width: 100%;
+
+}
+
+.card {
+    position: relative;
+    list-style: none;
+    width: 220px;
+    transition: .3s ease;
+
+    margin: 10px;
+    width: 200px;
+    height: 50vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.card:before {
+    content: "";
+    display: block;
+    padding: 150%;
+    width: 100%;
+
+}
+
+.card-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.card-background {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    left: 0;
+    border-radius: 20px;
+    background-size: 350px;
+    background-position: center;
+    filter: brightness(.9) saturate(1) contrast(1);
+    transform-origin: bottom;
+    transform: scale(1) translateZ(0);
+    transition: .3 ease;
+}
+
+.card:hover .card-background {
+    transform: scale(1.15) translateZ(0);
+    background-size: 260px;
+}
+
+.card-container:hover .card:not(:hover) {
+    transform: scale(.9);
+}
+
+.card-container:hover>.card:not(:hover) .card-background,
+.card-container:hover>.card:not(:hover) .card-category {
+    filter: brightness(.5) saturate(0) contrast(1.2) blur(20px);
+}
+
+.content {
+    top: 50%;
+    left: 0;
+    padding: 25px;
+    position: absolute;
+}
+
+.card-category {
+    color: #fff;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 5px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+
+}
+
+.card-heading {
+    color: #fff;
+    font-size: 25px;
+    line-height: 1;
+    text-shadow: 2px 2px 20px rgba(0, 0, 0, .2);
+}
+
+:root {
+    --blue: #12d2db;
+    --white: #fcf2fa;
+    --purple: #912a7eaa;
+    --purple-blc: #230622dd;
+    --shadow: 0 5px 10px 5px rgba(0, 0, 0, .3);
+    --navColor: linear-gradient(to right, rgba(178, 47, 147, .6)5%, rgba(35, 6, 34, .9));
+}
+
+nav {
+    position: absolute;
+    background: var(--navColor);
+    box-shadow: var(--shadow);
+    height: 80px;
+    width: 100%;
+
+}
+
+label.logo {
+
+    color: var(--white);
+    font-size: 30px;
+    line-height: 80px;
+    padding: 0 80px;
+    letter-spacing: -1px;
+    font-weight: 800;
+    font-style: italic;
+    transition: .2 ease;
+    text-shadow: 3px 5px 20px #230622dd;
+}
+
+nav ul {
+    float: right;
+    margin-right: 80px;
+
+}
+
+nav ul li {
+    display: inline-block;
+    line-height: 80px;
+
+}
+
+nav ul li a {
+    color: var(--white);
+    font-size: 17px;
+    padding: 7px 13px;
+    border-radius: 13px;
+    text-transform: lowercase;
+
+}
+
+a.active, a:hover{
+    background: var(--purple-blc);
+    transition: .5;
+
+}
+.checkbtn{
+    line-height: 80px;
+    font-size: 30px;
+    float: right;
+    cursor: pointer;
+    margin-right: 40px;
+    display: none;
+
+}
+
+.checkbtn i {
+    color: var(--white);
+    padding: 5px;
+    border-radius: 10px;
+    transition: .5 ease;
+
+
+}
+
+.checkbtn i:hover{
+    background: var(--purple-blc);
+}
+
+#check{
+    display: none;
+}
+
+.navbar{
+    height: 100vh;
+    background: url(img/1.png) no-repeat;
+    background-position: top;
+    background-size: cover;
+
+
+}
+@media (max-width: 767px) {
+    .card {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        color: var(--purple-blc);
+        display: none;
+    }
+    .card-heading {
+        display: none;
+}
+}
+
+@media (max-width: 575px) {
+    .card {
+        max-width: 100%;
+        height: auto;
+        margin: 10px 0;
+    }
+
+    .hero-section {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .card-container {
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 952px){
+    label.logo{
+        font-size: 25px;
+        padding-left: 50px;
+
+    }
+    nav ul li a{
+        font-size: 14px;
+
+    }
+}
+
+@media (max-width: 850px){
+
+    .checkbtn{
+        display: block;
+
+    }
+    ul{
+        position: fixed;
+        height: 100vh;
+        width: 100%;
+        background: var(--purple-blc);
+        top: 80px;
+        left: -100%;
+        padding-top: 80px;
+        text-align: center;
+        transition: .5 ease;
+
+    }
+nav ul li{
+    display: block;
+    margin: 30px 0;
+    line-height: 30px;
+}
+nav ul li a{
+    font-size: 20px;
+}
+a.actvie, a:hover{
+    background: none;
+    color: var(--blue);
+    text-shadow: 0 10px 15px var(--blue);
+
+}
+#check:checked ~ ul{
+    left: 0;
+
+}
+
+}
