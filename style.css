@@ -21,6 +21,7 @@ html {
 body {
     height: 100%;
     font-family: "Poppins", sans-serif;
+    
 }
 
 .hero-section {
@@ -129,6 +130,15 @@ body {
     --purple-blc: #230622dd;
     --shadow: 0 5px 10px 5px rgba(0, 0, 0, .3);
     --navColor: linear-gradient(to right, rgba(178, 47, 147, .6)5%, rgba(35, 6, 34, .9));
+    --grey:#0c344faa;
+    --black :#020c22;
+
+}
+
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
 }
 
 nav {
@@ -306,113 +316,186 @@ a:hover {
 
 }
 
-.slides {
-
-    margin: 0 auto;
-    width: 800px;
-    height: 400px;
-    overflow: hidden;
-
-}
-
-.slides {
-    width: 400%;
-    height: 400px;
-    display: flex;
-}
-
-.slides input {
-    display: none;
-}
-
-.slide {
-    width: 25%;
+.sec{
     position: relative;
-
-}
-
-.slide img {
-    width: 800px;
-}
-
-.manual_navigation {
-    position: absolute;
-    width: 800px;
-    margin-top: -40px;
+    min-height: 100Vh;
+    width: 100%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 
 }
+#modal-btn:checked,
+#modal-btn:not(:checked){
+    position: absolute;
+    display: none;
+   
+}
 
-.manual-btn {
-    border: 2px solid #fff;
-    padding: 5px;
-    border-radius: 10px;
+#modal-btn:checked,
+#modal-btn:not(:checked) + label{
+    position: relative;
+    height: 50px;
+    padding: 0 30px;
+    font-weight: 500;
+    font-size: 15px;
+    letter-spacing: 1px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    align-self: center;
     cursor: pointer;
-    transition: 1s;
+    color: var(--white);
+    background-color: var(--black);
+    border-radius: 20px;
+    border: 3px solid var(--white);
+    box-shadow: 0 0 20px var(--purple);
+    transition: .2s ease;
+}
+
+#modal-btn:not(:checked) +label:hover{
+    background-color: var(--black);
+    box-shadow: 0 0 30px var(--purple);
+}
+#modal-btn:checked +label i,
+#modal-btn:not(:checked) + label i{
+    margin-left: 20px;
+    font: 18px;
 
 }
 
-.manual-btn:not(:Last-child) {
-
-    margin-right: 40px;
+#modal-btn:checked + label .bx-x,
+#modal-btn:not(:checked) + label .bx-x{
+    position: fixed;
+    top: 50px;
+    right: 50px;
+    color: var(--white);
+    background-color: var(--black);
+    z-index: 110;
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--white);
+    border-radius: 50%;
+    line-height: 38px;
+    font-size: 20px;
+    box-shadow: none;
+    pointer-events: none;
+    opacity: 1;
 
 }
 
-.manual-btn:hover {
-    background-color: #fff;
+#modal-btn:checked + label .bx-x,:hover
+#modal-btn:not(:checked) + label .bx-x:hover{
+    transform: scale(.9);
+    box-shadow: 0 0 10px (--purple);
+    background-color: var(--black);
 
 }
-
-#radio1:checked~.first {
-    margin: -10%;
-
+#modal-btn:checked + label .bx-x{
+    transition: opacity .3s .3s ease,
+                transform .1s .1s ease,
+                box-shadow .1s .1s ease,
+                background-color .25s linear,
+                color .25s linear;
+    opacity: 1;
+    pointer-events: auto;
 }
 
-#radio2:checked~.first {
-    margin-left: -25%;
-}
-
-#radio3:checked~.first {
-    margin-left: -50%;
-}
-
-#radio4:checked ~ .first{
-    margin-left: -75%;
-}
-
-.navigation-auto div{
-    border: 2px solid #20a6ff;
-    padding: 5px;
-    border-radius: 10px;
-}
-
-.navigation-auto{
-    position: absolute;
-    width: 800px;
-    margin-top:360px;
+.modal{
+    position: fixed;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-}
+    margin: 0 auto;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    overflow-x: hidden;
+    pointer-events: none;
+    transition: opacity .25s .7s ease;
+    opacity: 0;
 
-.navigation-auto div:not(:last-child){
 
-    margin-right: 40px;
-}
-
-#radio1:checked ~ .navigation-auto .auto{
-background-color: var(--white);
-}
-#radio2:checked ~ .navigation-auto .auto{
-    background-color: var(--white);
-
-}
-#radio3:checked ~ .navigation-auto .auto{
-    background-color: var(--white);
-
-}
-#radio4:checked ~ .navigation-auto .auto{
-    background-color: var(--white);
 
 }
 
+#modal-btn:checked + label .bx-x{
+    /* ... */
+    pointer-events: auto;
+    /* ... */
+}
+
+#modal-btn:checked ~ .modal{
+    pointer-events: auto;
+    opacity: 1;
+    transition: all .3s ease-in-out;
+
+}
+
+.modal-wrap{
+    position: relative;
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 45px;
+    border: 3px solid var(--white);
+    border-radius: 20px;
+    overflow: hidden;
+    color: var(--white);
+    padding-bottom: 20px;
+    background-color: var(--black);
+    align-self: center;
+    box-shadow: 0 0 15px var(--purple);
+    transition: opacity .25s .25s ease , transform .3s .25 ease;
+    opacity: 0;
+    transform: scale(.6);
+
+
+
+}
+
+.modal-wrap .img{
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 300px;
+    background: url(img/Screenshot_1.png);
+    background-position: center;
+    background-size: cover;
+
+}
+
+.modal-wrap .img::after{
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 200px;
+    bottom: 0;
+    background: linear-gradient(to top, #020c22 5% #020c2000 100% );
+}
+
+.modal-wrap h2{
+    position: absolute;
+    font-size: 35px;
+    top: 240px;
+    left: 30px;
+
+}
+
+.modal-wrap p{
+    font: 15px;
+    padding: 20px 30px 0 30px;
+
+
+}
+
+#modal-btn:checked ~ .modal .modal-wrap{
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity .25s .5s ease, transform .35s .5s ease;
+}
